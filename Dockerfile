@@ -1,11 +1,15 @@
 FROM develar/java:8u45
 
-MAINTAINER Petr Krebs, Avast
+MAINTAINER scott
 
 RUN apk add --update bash && rm -rf /var/cache/apk/*
 
 ENV FLUME_VERSION 1.6.0
 ENV FLUME_HOME /opt/lib/flume
+ENV FLUME_AGENT_NAME a1
+ENV FLUME_CONF_DIR /opt/lib/flume/conf
+ENV FLUME_CONF_FILE example.conf
+
 
 RUN mkdir -p /opt/lib && \
     wget -q http://www.eu.apache.org/dist/flume/$FLUME_VERSION/apache-flume-$FLUME_VERSION-bin.tar.gz -O /opt/lib/apache-flume-$FLUME_VERSION-bin.tar.gz && \
@@ -16,6 +20,7 @@ RUN mkdir -p /opt/lib && \
 
 VOLUME [ "/opt/lib/flume/conf" ]
 
+COPY /conf /opt/lib/flume/conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 ENV HADOOP_VERSION=2.7.2
