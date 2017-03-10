@@ -22,6 +22,7 @@ VOLUME [ "/opt/lib/flume/conf" ]
 
 COPY /conf /opt/lib/flume/conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod 755 /docker-entrypoint.sh
 
 ENV HADOOP_VERSION=2.7.2
 ENV HADOOP_HOME=/opt/lib/hadoop-$HADOOP_VERSION
