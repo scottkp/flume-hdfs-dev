@@ -8,7 +8,7 @@ ENV FLUME_VERSION 1.6.0
 ENV FLUME_HOME /opt/lib/flume
 ENV FLUME_AGENT_NAME a1
 ENV FLUME_CONF_DIR /opt/lib/flume/conf
-ENV FLUME_CONF_FILE example.conf
+ENV FLUME_CONF_FILE $FLUME_CONF_DIR/example.conf
 
 
 RUN mkdir -p /opt/lib && \
