@@ -38,4 +38,4 @@ RUN wget -q http://www.eu.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/had
 
 #EXPOSE 8080
 
-ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -jar target/dockerapp-0.0.1-SNAPSHOT.jar", "/docker-entrypoint.sh" ]
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -jar /opt/lib/java/bin/dockerapp-0.0.1-SNAPSHOT.jar", "/docker-entrypoint.sh" ]
