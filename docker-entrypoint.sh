@@ -9,4 +9,8 @@ FLUME_CONF_FILE=${FLUME_CONF_FILE:-/opt/lib/flume/conf/flume-conf.properties}
 
 echo "Starting flume agent : ${FLUME_AGENT_NAME}"
 
-$FLUME_HOME/bin/flume-ng agent -c ${FLUME_CONF_DIR} -f ${FLUME_CONF_FILE} -n ${FLUME_AGENT_NAME} -Dflume.root.logger=INFO,console
+$FLUME_HOME/bin/flume-ng agent -c ${FLUME_CONF_DIR} -f ${FLUME_CONF_FILE} -n ${FLUME_AGENT_NAME} -Dflume.root.logger=INFO,console & 
+
+echo "FLUME STARTED"
+
+java $JAVA_OPTS -jar /opt/lib/java/bin/dockerapp-0.0.1-SNAPSHOT.jar
