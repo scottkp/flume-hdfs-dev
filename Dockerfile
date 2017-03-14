@@ -22,7 +22,6 @@ RUN mkdir -p /opt/lib && \
 VOLUME [ "/opt/lib/flume/conf" ]
 VOLUME [ "/opt/lib/flume/data" ]
 
-
 COPY /conf /opt/lib/flume/conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod 755 /docker-entrypoint.sh
