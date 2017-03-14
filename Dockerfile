@@ -21,7 +21,10 @@ RUN mkdir -p /opt/lib && \
 
 VOLUME [ "/opt/lib/flume/conf" ]
 VOLUME [ "/opt/lib/flume/data" ]
+VOLUME [ "/opt/lib/java/bin" ]
 
+
+COPY /bin /opt/lib/java/bin
 COPY /conf /opt/lib/flume/conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod 755 /docker-entrypoint.sh
@@ -33,4 +36,6 @@ RUN wget -q http://www.eu.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/had
     tar xzf /opt/lib/hadoop-$HADOOP_VERSION.tar.gz -C /opt/lib && \
     rm /opt/lib/hadoop-$HADOOP_VERSION.tar.gz
 
-ENTRYPOINT [ "/docker-entrypoint.sh" ]
+#EXPOSE 8080
+
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -jar target/dockerapp-0.0.1-SNAPSHOT.jar", "/docker-entrypoint.sh" ]
